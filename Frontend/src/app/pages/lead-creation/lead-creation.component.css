@@ -1,0 +1,25 @@
+label {
+  display: block;
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+input, select, textarea {
+  width: 300px;
+  padding: 6px;
+  margin-top: 4px;
+}
+
+button {
+  margin-top: 15px;
+  padding: 8px 16px;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+.success {
+  color: green;
+  font-size: 14px;
+}
