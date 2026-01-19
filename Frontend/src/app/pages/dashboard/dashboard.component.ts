@@ -7,13 +7,14 @@ import { DashboardService } from '../../services/dashboard.service';
   selector: 'app-dashboard',
   standalone: true,
   imports: [CommonModule, KpiCardComponent],
-  templateUrl: './dashboard.html',
-  styleUrls: ['./dashboard.css']
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
 
   userName = 'Varun';
 
+  stats: any[] = [];
   dashboard: any = {
     total_leads: -1,
     active_customers: -1,
@@ -38,13 +39,14 @@ export class DashboardComponent implements OnInit {
     // KPI data
     this.dashboardService.getDashboard('EMP001')
       .subscribe({
-        next: (data) => {
+        next: (data: any) => {
           console.log('Data received in component:', data);
           this.dashboard = data;
+          this.updateStats();
           this.loading = false;
           this.cdr.detectChanges(); // 👈 Force UI update
         },
-        error: (err) => {
+        error: (err: any) => {
           console.error('Error in component:', err);
           this.error = 'Failed to load data. Status: ' + err.status + ' ' + err.statusText;
           this.loading = false;
@@ -55,12 +57,22 @@ export class DashboardComponent implements OnInit {
     // Leads table data
     this.dashboardService.getLeads()
       .subscribe({
-        next: (data) => {
+        next: (data: any) => {
           this.leads = data;
           console.log('Leads:', data);
         },
-        error: (err) => console.error(err)
+        error: (err: any) => console.error(err)
       });
+  }
+
+  updateStats() {
+    this.stats = [
+      { label: 'TOTAL LEADS', value: this.dashboard.total_leads, change: '' },
+      { label: 'ACTIVE CUSTOMERS', value: this.dashboard.active_customers, change: '' },
+      { label: 'PENDING LEADS', value: this.dashboard.pending_leads, change: '' },
+      { label: 'SITE VISIT DONE', value: this.dashboard.site_visit_done, change: '' },
+      { label: 'DEALS CLOSED', value: this.dashboard.deals_closed, change: '' }
+    ];
   }
 
   onAddProject() {

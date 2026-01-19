@@ -116,7 +116,42 @@ input.error {
     margin-top: 2px;
 }
 
+/* File Upload Styles */
+.file-upload-wrapper {
+    border: 2px dashed var(--input-border);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+    background: var(--glass-bg);
+    transition: all 0.2s ease;
+}
 
+.file-upload-wrapper:hover {
+    border-color: var(--primary);
+    background: rgba(37, 99, 235, 0.05);
+}
+
+.upload-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.file-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.file-tag {
+    background: var(--primary);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 0.85rem;
+}
 
 /* Form Actions */
 .form-actions {

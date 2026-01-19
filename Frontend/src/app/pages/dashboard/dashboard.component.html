@@ -1,0 +1,45 @@
+<div class="dashboard-layout">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h1 class="logo">CRM</h1>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active">Dashboard</a>
+            <a href="#" class="nav-item">CRM Customers</a>
+            <a href="#" class="nav-item">Overall Leads</a>
+            <a href="#" class="nav-item">Marketing</a>
+            <a href="#" class="nav-item">Reports</a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="search-container">
+                <input type="text" placeholder="Search..." class="search-input">
+                <button class="search-btn">
+                    <span class="search-icon">🔍</span>
+                </button>
+            </div>
+            <div class="user-info">
+                <span class="user-avatar">👤</span>
+                <span class="user-name">Varun</span>
+            </div>
+        </header>
+
+        <section class="banner">
+            <div class="banner-content">
+                <h2>Good Afternoon, Varun!</h2>
+                <p>Submit activity is must for every site visit and office visit</p>
+            </div>
+        </section>
+
+        <div class="stats-grid">
+            <app-kpi-card *ngFor="let stat of stats" [label]="stat.label" [value]="stat.value">
+            </app-kpi-card>
+        </div>
+
+        <button class="add-project-btn" (click)="onAddProject()">
+            + Add New Project
+        </button>
+    </main>
+</div>

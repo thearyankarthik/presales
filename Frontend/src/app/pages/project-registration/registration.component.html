@@ -6,21 +6,19 @@
     </header>
 
     <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="registration-form">
-
+      
       <!-- Section: Basic Information -->
       <section class="form-section">
         <h2 class="section-title">Basic Information</h2>
         <div class="form-row">
           <div class="form-group">
             <label for="project_id">Project ID <span class="required">*</span></label>
-            <input type="text" id="project_id" formControlName="project_id" placeholder="Enter Project ID"
-              [class.error]="isFieldInvalid('project_id')">
+            <input type="text" id="project_id" formControlName="project_id" placeholder="Enter Project ID" [class.error]="isFieldInvalid('project_id')">
             <span class="error-msg" *ngIf="isFieldInvalid('project_id')">Project ID is required</span>
           </div>
           <div class="form-group">
             <label for="project_name">Project Name <span class="required">*</span></label>
-            <input type="text" id="project_name" formControlName="project_name" placeholder="Enter Project Name"
-              [class.error]="isFieldInvalid('project_name')">
+            <input type="text" id="project_name" formControlName="project_name" placeholder="Enter Project Name" [class.error]="isFieldInvalid('project_name')">
             <span class="error-msg" *ngIf="isFieldInvalid('project_name')">Project Name is required</span>
           </div>
         </div>
@@ -28,16 +26,19 @@
           <div class="form-group">
             <label for="project_type">Project Type</label>
             <select id="project_type" formControlName="project_type">
-              <option value="Villa">Villa</option>
-              <option value="Apartment">Apartment</option>
+              <option value="">Select Type</option>
+              <option value="Residential">Residential</option>
+              <option value="Commercial">Commercial</option>
+              <option value="Industrial">Industrial</option>
             </select>
           </div>
           <div class="form-group">
             <label for="status">Status</label>
             <select id="status" formControlName="status">
-              <option value="Active">Active</option>
-              <option value="Inactive">Inactive</option>
-              <option value="Pre-Launch">Pre-Launch</option>
+              <option value="Pending">Pending</option>
+              <option value="Approved">Approved</option>
+              <option value="Ongoing">Ongoing</option>
+              <option value="Completed">Completed</option>
             </select>
           </div>
         </div>
@@ -54,8 +55,8 @@
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label for="location">Location</label>
-            <input type="text" id="location" formControlName="location" placeholder="Project locality/area">
+            <label for="location">Area / Location</label>
+            <input type="text" id="location" formControlName="location" placeholder="e.g. Downtown">
           </div>
           <div class="form-group">
             <label for="city">City</label>
@@ -80,8 +81,8 @@
         <h2 class="section-title">Project Specifications</h2>
         <div class="form-row">
           <div class="form-group">
-            <label for="total_area">Total Area</label>
-            <input type="number" id="total_area" formControlName="total_area" placeholder="sq.ft / acres">
+            <label for="total_area">Total Area (sq ft)</label>
+            <input type="number" id="total_area" formControlName="total_area">
           </div>
           <div class="form-group">
             <label for="number_of_units">Number of Units</label>
@@ -91,37 +92,65 @@
         <div class="form-row">
           <div class="form-group full-width">
             <label for="rera_number">RERA Number</label>
-            <input type="text" id="rera_number" formControlName="rera_number"
-              placeholder="Enter RERA registration number">
+            <input type="text" id="rera_number" formControlName="rera_number" placeholder="Enter RERA registration number">
           </div>
         </div>
       </section>
 
-      <!-- Section: Audit Details -->
+      <!-- Section: Financial Information -->
       <section class="form-section">
-        <h2 class="section-title">Audit Details</h2>
+        <h2 class="section-title">Financial & Banking</h2>
         <div class="form-row">
           <div class="form-group">
-            <label for="created_by">Created By (Emp ID) <span class="required">*</span></label>
-            <input type="text" id="created_by" formControlName="created_by" placeholder="Enter Employee ID"
-              [class.error]="isFieldInvalid('created_by')">
-            <span class="error-msg" *ngIf="isFieldInvalid('created_by')">Creator ID is required</span>
+            <label for="bank_name">Bank Name</label>
+            <input type="text" id="bank_name" formControlName="bank_name" placeholder="Enter Bank Name">
           </div>
           <div class="form-group">
-            <label for="created_on">Created On <span class="required">*</span></label>
-            <input type="datetime-local" id="created_on" formControlName="created_on"
-              [class.error]="isFieldInvalid('created_on')">
-            <span class="error-msg" *ngIf="isFieldInvalid('created_on')">Creation date is required</span>
+            <label for="account_number">Account Number</label>
+            <input type="text" id="account_number" formControlName="account_number" placeholder="Enter Account Number">
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label for="modified_by">Modified By (Emp ID)</label>
-            <input type="text" id="modified_by" formControlName="modified_by" placeholder="Enter Employee ID">
+            <label for="branch_name">Branch Name</label>
+            <input type="text" id="branch_name" formControlName="branch_name" placeholder="Enter Branch Name">
           </div>
           <div class="form-group">
-            <label for="modified_on">Modified On</label>
-            <input type="datetime-local" id="modified_on" formControlName="modified_on">
+            <label for="ifsc_code">IFSC Code</label>
+            <input type="text" id="ifsc_code" formControlName="ifsc_code" placeholder="Enter IFSC Code">
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Documents & Additional Info -->
+      <section class="form-section">
+        <h2 class="section-title">Documents & Additional Info</h2>
+        <div class="form-row">
+          <div class="form-group full-width">
+            <label for="owner_name">Owner / Signatory Name</label>
+            <input type="text" id="owner_name" formControlName="owner_name" placeholder="Full Name">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group full-width">
+            <label>Upload Documents</label>
+            <div class="file-upload-wrapper" (click)="fileInput.click()">
+              <div class="file-upload-content">
+                <span class="upload-icon">📁</span>
+                <span *ngIf="selectedFiles().length === 0">Click to upload or drag and drop</span>
+                <span *ngIf="selectedFiles().length > 0">{{ selectedFiles().length }} files selected</span>
+              </div>
+              <input type="file" #fileInput (change)="onFileChange($event)" multiple hidden>
+            </div>
+            <div class="file-list" *ngIf="selectedFiles().length > 0">
+              <span class="file-tag" *ngFor="let file of selectedFiles()">{{ file.name }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group full-width">
+            <label for="remarks">Remarks</label>
+            <textarea id="remarks" formControlName="remarks" rows="3" placeholder="Additional notes..."></textarea>
           </div>
         </div>
       </section>
@@ -134,7 +163,7 @@
         </button>
       </div>
     </form>
-
+    
     <div class="success-banner" *ngIf="submitted()">
       <div class="success-content">
         <span class="success-icon">Check</span>

@@ -8,8 +8,14 @@ export const routes: Routes = [
         .then(m => m.RegistrationComponent)
   },
   {
+    path: 'dashboard',
+    loadComponent: () =>
+      import('./pages/dashboard/dashboard.component')
+        .then(m => m.DashboardComponent)
+  },
+  {
     path: '',
-    redirectTo: 'registration',
+    redirectTo: 'dashboard',
     pathMatch: 'full'
   }
 ];
