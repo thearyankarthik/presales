@@ -13,13 +13,12 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 export class RegistrationComponent {
   registrationForm: FormGroup;
   submitted = signal(false);
-  selectedFiles = signal<File[]>([]);
 
   constructor(private fb: FormBuilder) {
     this.registrationForm = this.fb.group({
       project_id: ['', [Validators.required]],
       project_name: ['', [Validators.required]],
-      project_type: [''],
+      project_type: ['Villa', [Validators.required]], // Default to Villa or make user select
       location: [''],
       address_line_1: [''],
       city: [''],
@@ -28,13 +27,11 @@ export class RegistrationComponent {
       total_area: [0, [Validators.min(0)]],
       number_of_units: [0, [Validators.min(0)]],
       rera_number: [''],
-      status: ['Pending'],
-      bank_name: [''],
-      account_number: [''],
-      branch_name: [''],
-      ifsc_code: [''],
-      owner_name: [''],
-      remarks: [''],
+      status: ['Active'],
+      created_by: ['', [Validators.required]],
+      created_on: ['', [Validators.required]],
+      modified_by: [''],
+      modified_on: [''],
     });
   }
 
@@ -43,17 +40,10 @@ export class RegistrationComponent {
     return !!(field && field.invalid && (field.dirty || field.touched));
   }
 
-  onFileChange(event: any) {
-    if (event.target.files.length > 0) {
-      this.selectedFiles.set(Array.from(event.target.files));
-    }
-  }
-
   onSubmit() {
     this.registrationForm.markAllAsTouched();
     if (this.registrationForm.valid) {
       console.log('Form Submitted:', this.registrationForm.value);
-      console.log('Files:', this.selectedFiles());
       this.submitted.set(true);
       // Reset after a delay for visual feedback
       setTimeout(() => this.submitted.set(false), 3000);
