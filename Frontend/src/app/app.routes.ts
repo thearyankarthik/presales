@@ -4,7 +4,7 @@ export const routes: Routes = [
   {
     path: 'registration',
     loadComponent: () =>
-      import('./pages/registration/registration.component')
+      import('./pages/project-registration/registration.component')
         .then(m => m.RegistrationComponent)
   },
   {
