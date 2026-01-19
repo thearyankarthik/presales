@@ -1,66 +1,45 @@
 <div class="dashboard-layout">
     <aside class="sidebar">
         <div class="sidebar-header">
-            <div class="logo">
-                <div class="logo-icon"></div>
-                <span>Antigravity</span>
-            </div>
+            <h1 class="logo">CRM</h1>
         </div>
         <nav class="sidebar-nav">
             <a href="#" class="nav-item active">Dashboard</a>
-            <a href="#" class="nav-item">Analytics</a>
-            <a href="#" class="nav-item">Customers</a>
-            <a href="#" class="nav-item">Settings</a>
+            <a href="#" class="nav-item">CRM Customers</a>
+            <a href="#" class="nav-item">Overall Leads</a>
+            <a href="#" class="nav-item">Marketing</a>
+            <a href="#" class="nav-item">Reports</a>
         </nav>
     </aside>
 
     <main class="main-content">
         <header class="top-bar">
-            <h2>Dashboard Overview</h2>
-            <div class="user-profile">
-                <div class="avatar">JS</div>
+            <div class="search-container">
+                <input type="text" placeholder="Search..." class="search-input">
+                <button class="search-btn">
+                    <span class="search-icon">🔍</span>
+                </button>
+            </div>
+            <div class="user-info">
+                <span class="user-avatar">👤</span>
+                <span class="user-name">Varun</span>
             </div>
         </header>
 
-        <div class="stats-grid">
-            <div class="stat-card" *ngFor="let stat of stats">
-                <h3>{{ stat.label }}</h3>
-                <div class="stat-value">{{ stat.value }}</div>
-                <div class="stat-change">{{ stat.change }}</div>
+        <section class="banner">
+            <div class="banner-content">
+                <h2>Good Afternoon, Varun!</h2>
+                <p>Submit activity is must for every site visit and office visit</p>
             </div>
+        </section>
+
+        <div class="stats-grid">
+            <app-kpi-card *ngFor="let stat of stats" [label]="stat.label" [value]="stat.value">
+            </app-kpi-card>
         </div>
 
-        <div class="content-grid">
-            <div class="chart-container">
-                <h3>Recent Activity</h3>
-                <div class="placeholder-chart">
-                    <!-- Placeholder for a chart -->
-                    <div class="bar" style="height: 40%"></div>
-                    <div class="bar" style="height: 70%"></div>
-                    <div class="bar" style="height: 50%"></div>
-                    <div class="bar" style="height: 90%"></div>
-                    <div class="bar" style="height: 60%"></div>
-                </div>
-            </div>
-            <div class="recent-list">
-                <h3>Transactions</h3>
-                <div class="transaction-item">
-                    <div class="t-icon"></div>
-                    <div class="t-details">
-                        <span class="t-name">Sarah Connor</span>
-                        <span class="t-date">Jan 18, 2026</span>
-                    </div>
-                    <span class="t-amount">+$250.00</span>
-                </div>
-                <div class="transaction-item">
-                    <div class="t-icon"></div>
-                    <div class="t-details">
-                        <span class="t-name">John Doe</span>
-                        <span class="t-date">Jan 17, 2026</span>
-                    </div>
-                    <span class="t-amount">+$120.00</span>
-                </div>
-            </div>
-        </div>
+        <button class="add-project-btn" (click)="onAddProject()">
+            + Add New Project
+        </button>
     </main>
 </div>
