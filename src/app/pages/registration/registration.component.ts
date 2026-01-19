@@ -6,8 +6,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   selector: 'app-registration',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './registration.html',
-  styleUrls: ['./registration.css'],
+  templateUrl: './registration.component.html',
+  styleUrls: ['./registration.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegistrationComponent {
