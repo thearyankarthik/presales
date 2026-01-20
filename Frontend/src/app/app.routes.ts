@@ -20,6 +20,12 @@ export const routes: Routes = [
         .then(m => m.DashboardComponent)
   },
   {
+    path: 'user-registration',
+    loadComponent: () =>
+      import('./pages/user-registration/user-registration.component')
+        .then(m => m.UserRegistrationComponent)
+  },
+  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'

@@ -1,0 +1,223 @@
+.registration-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: var(--bg-gradient);
+    padding: 40px 20px;
+}
+
+.logo-container {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    z-index: 10;
+}
+
+.app-logo {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+}
+
+.registration-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.registration-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    padding: 40px;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: var(--shadow-lg);
+    animation: slideUp 0.5s ease-out;
+}
+
+.registration-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.registration-header h1 {
+    color: var(--text-main);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.025em;
+}
+
+.registration-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group.full-width {
+    grid-column: span 2;
+}
+
+.form-group label {
+    color: var(--text-main);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--input-border);
+    background: var(--input-bg);
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--text-main);
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--input-focus);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.phone-input-group {
+    display: flex;
+    gap: 8px;
+}
+
+.phone-input-group select {
+    width: 100px;
+    flex-shrink: 0;
+}
+
+.error-message {
+    color: var(--error);
+    font-size: 0.8rem;
+    margin-top: 4px;
+}
+
+.registration-button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    grid-column: span 2;
+    margin-top: 16px;
+}
+
+.registration-button:hover:not(:disabled) {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.registration-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.registration-footer {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    grid-column: span 2;
+}
+
+.registration-footer a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.registration-footer a:hover {
+    text-decoration: underline;
+}
+
+.file-upload-container {
+    position: relative;
+}
+
+.file-upload-label {
+    display: block;
+    padding: 12px 16px;
+    border: 2px dashed var(--input-border);
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: var(--input-bg);
+}
+
+.file-upload-label:hover {
+    border-color: var(--primary);
+    background: rgba(37, 99, 235, 0.05);
+}
+
+.file-input {
+    display: none;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .registration-form {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full-width {
+        grid-column: span 1;
+    }
+
+    .registration-button {
+        grid-column: span 1;
+    }
+
+    .registration-footer {
+        grid-column: span 1;
+    }
+
+    .logo-container {
+        top: 20px;
+        left: 20px;
+    }
+
+    .app-logo {
+        height: 48px;
+    }
+
+    .registration-card {
+        padding: 32px 24px;
+    }
+}
