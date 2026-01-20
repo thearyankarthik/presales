@@ -3,6 +3,7 @@ from flask_cors import CORS
 
 from controllers.dashboard_controller import dashboard_bp
 from controllers.leads_controller import leads_bp
+from controllers.registration_controller import registration_bp
 
 app = Flask(__name__)
 CORS(app)
@@ -10,6 +11,7 @@ CORS(app)
 # Registering Blueprints from the controllers folder
 app.register_blueprint(dashboard_bp, url_prefix="/api/dashboard")
 app.register_blueprint(leads_bp, url_prefix="/api/leads")
+app.register_blueprint(registration_bp, url_prefix="/api/registration")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)

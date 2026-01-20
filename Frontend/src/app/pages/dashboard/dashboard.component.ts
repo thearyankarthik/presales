@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { KpiCardComponent } from '../../shared/kpi-card/kpi-card';
 import { DashboardService } from '../../services/dashboard.service';
 
@@ -30,7 +31,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private dashboardService: DashboardService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -77,6 +79,6 @@ export class DashboardComponent implements OnInit {
 
   onAddProject() {
     console.log('Add New Project clicked');
-    // Future implementation: Open registration form
+    this.router.navigate(['/registration']);
   }
 }
