@@ -1,25 +1,22 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
 export class DashboardService {
+    private apiUrl = 'http://localhost:5000/api';
 
-    getDashboard(empId: string) {
-        return of({
-            total_leads: 100,
-            active_customers: 50,
-            pending_leads: 20,
-            site_visit_done: 10,
-            deals_closed: 5
+    constructor(private http: HttpClient) { }
+
+    getDashboard(empId: string): Observable<any> {
+        return this.http.get(`${this.apiUrl}/dashboard`, {
+            params: { emp_id: empId }
         });
     }
 
-    getLeads() {
-        return of([
-            { name: 'Lead 1', status: 'Active' },
-            { name: 'Lead 2', status: 'Pending' }
-        ]);
+    getLeads(): Observable<any> {
+        return this.http.get(`${this.apiUrl}/leads`);
     }
 }
