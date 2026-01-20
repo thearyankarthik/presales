@@ -6,19 +6,21 @@
     </header>
 
     <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="registration-form">
-      
+
       <!-- Section: Basic Information -->
       <section class="form-section">
         <h2 class="section-title">Basic Information</h2>
         <div class="form-row">
           <div class="form-group">
             <label for="project_id">Project ID <span class="required">*</span></label>
-            <input type="text" id="project_id" formControlName="project_id" placeholder="Enter Project ID" [class.error]="isFieldInvalid('project_id')">
+            <input type="text" id="project_id" formControlName="project_id" placeholder="Enter Project ID"
+              [class.error]="isFieldInvalid('project_id')">
             <span class="error-msg" *ngIf="isFieldInvalid('project_id')">Project ID is required</span>
           </div>
           <div class="form-group">
             <label for="project_name">Project Name <span class="required">*</span></label>
-            <input type="text" id="project_name" formControlName="project_name" placeholder="Enter Project Name" [class.error]="isFieldInvalid('project_name')">
+            <input type="text" id="project_name" formControlName="project_name" placeholder="Enter Project Name"
+              [class.error]="isFieldInvalid('project_name')">
             <span class="error-msg" *ngIf="isFieldInvalid('project_name')">Project Name is required</span>
           </div>
         </div>
@@ -92,35 +94,12 @@
         <div class="form-row">
           <div class="form-group full-width">
             <label for="rera_number">RERA Number</label>
-            <input type="text" id="rera_number" formControlName="rera_number" placeholder="Enter RERA registration number">
+            <input type="text" id="rera_number" formControlName="rera_number"
+              placeholder="Enter RERA registration number">
           </div>
         </div>
       </section>
 
-      <!-- Section: Financial Information -->
-      <section class="form-section">
-        <h2 class="section-title">Financial & Banking</h2>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="bank_name">Bank Name</label>
-            <input type="text" id="bank_name" formControlName="bank_name" placeholder="Enter Bank Name">
-          </div>
-          <div class="form-group">
-            <label for="account_number">Account Number</label>
-            <input type="text" id="account_number" formControlName="account_number" placeholder="Enter Account Number">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="branch_name">Branch Name</label>
-            <input type="text" id="branch_name" formControlName="branch_name" placeholder="Enter Branch Name">
-          </div>
-          <div class="form-group">
-            <label for="ifsc_code">IFSC Code</label>
-            <input type="text" id="ifsc_code" formControlName="ifsc_code" placeholder="Enter IFSC Code">
-          </div>
-        </div>
-      </section>
 
       <!-- Section: Documents & Additional Info -->
       <section class="form-section">
@@ -163,7 +142,7 @@
         </button>
       </div>
     </form>
-    
+
     <div class="success-banner" *ngIf="submitted()">
       <div class="success-content">
         <span class="success-icon">Check</span>

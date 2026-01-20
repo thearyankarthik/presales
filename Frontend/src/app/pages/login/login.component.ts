@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-login',
@@ -9,4 +10,11 @@ import { CommonModule } from '@angular/common';
     styleUrl: './login.component.css'
 })
 export class LoginComponent {
+    constructor(private router: Router) { }
+
+    onLogin(event: Event) {
+        event.preventDefault();
+        console.log('Bypassing login, navigating to dashboard...');
+        this.router.navigate(['/dashboard']);
+    }
 }

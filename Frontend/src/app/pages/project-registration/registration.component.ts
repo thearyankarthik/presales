@@ -1,6 +1,8 @@
 import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ProjectService } from '../../services/project.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -15,7 +17,11 @@ export class RegistrationComponent {
   submitted = signal(false);
   selectedFiles = signal<File[]>([]);
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private projectService: ProjectService,
+    private router: Router
+  ) {
     this.registrationForm = this.fb.group({
       project_id: ['', [Validators.required]],
       project_name: ['', [Validators.required]],
@@ -29,10 +35,6 @@ export class RegistrationComponent {
       number_of_units: [0, [Validators.min(0)]],
       rera_number: [''],
       status: ['Pending'],
-      bank_name: [''],
-      account_number: [''],
-      branch_name: [''],
-      ifsc_code: [''],
       owner_name: [''],
       remarks: [''],
     });
@@ -53,10 +55,22 @@ export class RegistrationComponent {
     this.registrationForm.markAllAsTouched();
     if (this.registrationForm.valid) {
       console.log('Form Submitted:', this.registrationForm.value);
-      console.log('Files:', this.selectedFiles());
-      this.submitted.set(true);
-      // Reset after a delay for visual feedback
-      setTimeout(() => this.submitted.set(false), 3000);
+
+      this.projectService.registerProject(this.registrationForm.value).subscribe({
+        next: (response) => {
+          console.log('Success:', response);
+          this.submitted.set(true);
+          // Success feedback and navigate back or reset
+          setTimeout(() => {
+            this.submitted.set(false);
+            this.router.navigate(['/']); // Go back to dashboard after success
+          }, 3000);
+        },
+        error: (err) => {
+          console.error('Error registering project:', err);
+          alert('Failed to register project. Please check if the backend is running.');
+        }
+      });
     } else {
       console.log('Form is invalid');
     }

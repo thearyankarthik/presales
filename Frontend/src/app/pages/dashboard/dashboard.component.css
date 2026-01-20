@@ -25,11 +25,11 @@
     padding: 0 48px 32px;
 }
 
-.logo {
-    font-size: 24px;
-    font-weight: 800;
-    margin: 0;
-    letter-spacing: 1px;
+.company-logo {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+    display: block;
 }
 
 .sidebar-nav {
