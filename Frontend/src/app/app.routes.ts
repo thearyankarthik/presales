@@ -20,10 +20,16 @@ export const routes: Routes = [
         .then(m => m.DashboardComponent)
   },
   {
+
     path: 'call-logs',
     loadComponent: () =>
       import('./pages/call-logs/call-logs.component')
         .then(m => m.CallLogsComponent)
+  }, 
+    {path: 'user-registration',
+    loadComponent: () =>
+      import('./pages/user-registration/user-registration.component')
+        .then(m => m.UserRegistrationComponent)
   },
   {
     path: '',
