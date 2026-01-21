@@ -20,6 +20,12 @@ export const routes: Routes = [
         .then(m => m.DashboardComponent)
   },
   {
+    path: 'call-logs',
+    loadComponent: () =>
+      import('./pages/call-logs/call-logs.component')
+        .then(m => m.CallLogsComponent)
+  },
+  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
